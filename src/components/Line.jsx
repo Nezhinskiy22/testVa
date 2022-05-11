@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Line = () => {
+const Line = ({ data }) => {
   return (
     <div>
       <Link to="/">

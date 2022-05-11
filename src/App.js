@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState();
-  const [period, setPeriod] = useState(1);
+  const [period, setPeriod] = useState(3);
 
   const options = {
     method: "GET",

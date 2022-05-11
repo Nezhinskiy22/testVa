@@ -1,11 +1,22 @@
 import React from "react";
+import TableRow from "./TableRow";
 
 const List = ({ data }) => {
   return (
     <div>
-      {data.map((item) => (
-        <p key={item._id}>{item.messages[1].clientName}</p>
-      ))}
+      <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+          <th>Session</th>
+          <th>Agents on call</th>
+          <th>Started at</th>
+          <th>Finished at</th>
+          <th>Amount of messages</th>
+          <th>Latest page</th>
+        </tr>
+        {data.map((item) => (
+          <TableRow data={item} />
+        ))}
+      </table>
     </div>
   );
 };

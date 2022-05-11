@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { selectData } from "../utils/selectData";
 import List from "./List";
+import Select from "./Select";
 
 const Main = () => {
   const [data, setData] = useState();
+  const [period, setPeriod] = useState(3);
 
   const options = {
     method: "GET",
@@ -12,19 +16,30 @@ const Main = () => {
     },
   };
 
+  let date = new Date();
+  let startDate = new Date(date.setDate(date.getDate() - period)).toUTCString();
+
   useEffect(() => {
     fetch(
-      "https://dev-api.voice-able.com/client/demoGlasses/get-chats-by-date?startDate=Tue,+03+May+2022+21:00:00+GMT&endDate=Tue,+10+May+2022+19:24:29+GMT",
+      `https://dev-api.voice-able.com/client/demoGlasses/get-chats-by-date?startDate=${startDate}&endDate=Tue,+10+May+2022+19:24:29+GMT`,
       options
     )
       .then((response) => response.json())
       .then((response) => setData(response))
       .catch((err) => console.error(err));
-  }, []);
+  }, [period]);
 
   console.log(data);
 
-  return <div>{data && <List data={data} />}</div>;
+  return (
+    <div>
+      <Select setPeriod={setPeriod} selectData={selectData} />
+      <Link to="/line">
+        <button style={{ margin: "20px", padding: "10px" }}>To 2nd page</button>
+      </Link>
+      {data && <List data={data} />}
+    </div>
+  );
 };
 
 export default Main;

@@ -14,7 +14,7 @@ const Line = ({ data }) => {
     end: new Date(item.finishedAt).getTime(),
   }));
 
-  const dayDuration = sessions.map((item)=>console.log('pause');)
+  const dayDuration = sessions.map((item) => console.log("pause"));
   console.log(howLong);
   console.log(sessions);
 

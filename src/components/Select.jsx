@@ -1,7 +1,6 @@
 import React from "react";
 
 const Select = ({ setPeriod, selectData }) => {
-  console.log(selectData);
   return (
     <div>
       <label htmlFor="days">Choose period: </label>

@@ -30,7 +30,6 @@ const Main = () => {
   }, [period]);
 
   console.log(data);
-
   return (
     <div>
       <Select setPeriod={setPeriod} selectData={selectData} />

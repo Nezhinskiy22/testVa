@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TableRow from "./TableRow";
 
 const List = ({ data }) => {
@@ -15,7 +15,7 @@ const List = ({ data }) => {
             <th>Latest page</th>
           </tr>
         </thead>
-        {data.map((item) => (
+        {data.slice(0, 20).map((item) => (
           <TableRow data={item} key={item._id} />
         ))}
       </table>

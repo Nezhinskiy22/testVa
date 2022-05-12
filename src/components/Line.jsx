@@ -14,16 +14,19 @@ const Line = ({ data }) => {
     end: new Date(item.finishedAt).getTime(),
   }));
 
-  const dayDuration = sessions.map((item) => console.log("pause"));
-  console.log(howLong);
+  const dayDuration = sessions.map(
+    (item, index) => howLong[index].end - howLong[index].start
+  );
+  console.log(dayDuration);
   console.log(sessions);
+  console.log(howLong);
 
   const [userData, setUserData] = useState({
     labels: num,
     datasets: [
       {
         label: "Number of Sessions",
-        data: [3, 5, 9],
+        data: dayDuration,
         backgroundColor: ["gray"],
       },
     ],

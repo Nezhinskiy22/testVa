@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TableRow from "./TableRow";
 
 const List = ({ data }) => {
   const [rowData, setRowData] = useState([...data]);
   const [order, setOrder] = useState("start");
 
-  const sort = (col) => {
+  useEffect(() => {
+    setRowData([...data]);
+  }, [data]);
+
+  const sortData = (col) => {
     if (order === "start") {
       const sorted = [...rowData].sort((a, b) =>
         a[col].toString() > b[col].toString() ? 1 : -1
@@ -31,7 +35,7 @@ const List = ({ data }) => {
               <button
                 style={{ padding: "5", width: "80%", fontSize: "16px" }}
                 type="button"
-                onClick={() => sort("session")}
+                onClick={() => sortData("session")}
               >
                 Session
               </button>
@@ -40,7 +44,7 @@ const List = ({ data }) => {
               <button
                 style={{ padding: "5", width: "80%", fontSize: "16px" }}
                 type="button"
-                onClick={() => sort("agentsOnCall")}
+                onClick={() => sortData("agentsOnCall")}
               >
                 Agents on call
               </button>
@@ -49,7 +53,7 @@ const List = ({ data }) => {
               <button
                 style={{ padding: "5", width: "80%", fontSize: "16px" }}
                 type="button"
-                onClick={() => sort("startedAt")}
+                onClick={() => sortData("startedAt")}
               >
                 Started at
               </button>
@@ -58,7 +62,7 @@ const List = ({ data }) => {
               <button
                 style={{ padding: "5", width: "80%", fontSize: "16px" }}
                 type="button"
-                onClick={() => sort("finishedAt")}
+                onClick={() => sortData("finishedAt")}
               >
                 Finished at
               </button>
@@ -67,7 +71,7 @@ const List = ({ data }) => {
               <button
                 style={{ padding: "5", width: "80%", fontSize: "16px" }}
                 type="button"
-                onClick={() => sort("messages")}
+                onClick={() => sortData("messages")}
               >
                 Amount of messages
               </button>
